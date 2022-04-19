@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/compensation-calculator/static/css/main.2e968dee.css",
+    "main.js": "/compensation-calculator/static/js/main.9116520a.js",
+    "static/js/787.28cb0dcd.chunk.js": "/compensation-calculator/static/js/787.28cb0dcd.chunk.js",
+    "static/media/Sora.ttf": "/compensation-calculator/static/media/Sora.9d1a5a24778609b79d75.ttf",
+    "static/media/Image.png": "/compensation-calculator/static/media/Image.9379606f45fb6fda43d5.png",
+    "index.html": "/compensation-calculator/index.html",
+    "main.2e968dee.css.map": "/compensation-calculator/static/css/main.2e968dee.css.map",
+    "main.9116520a.js.map": "/compensation-calculator/static/js/main.9116520a.js.map",
+    "787.28cb0dcd.chunk.js.map": "/compensation-calculator/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e968dee.css",
+    "static/js/main.9116520a.js"
+  ]
+}
