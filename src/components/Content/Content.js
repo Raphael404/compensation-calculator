@@ -1,20 +1,21 @@
 import React from "react";
 import image from "../../Assets/Images/Image.png";
 
-const Content = () => {
-  const list = [
-    { title: "Tellus Ullamcorper Inceptos" },
-    {
-      title: "Magna Condimentum",
-      content: [
-        { title: "Mattis Tristique" },
-        { title: "Pharetra Pellentesque Dapibus" },
-      ],
-    },
-    { title: "Aenean Inceptos" },
-    { title: "Parturient Bibendum" },
-  ];
+const list = [
+  { id: 1, title: "Tellus Ullamcorper Inceptos" },
+  {
+    id: 2,
+    title: "Magna Condimentum",
+    content: [
+      { id: 3, title: "Mattis Tristique" },
+      { id: 4, title: "Pharetra Pellentesque Dapibus" },
+    ],
+  },
+  { id: 5, title: "Aenean Inceptos" },
+  { id: 6, title: "Parturient Bibendum" },
+];
 
+const Content = () => {
   return (
     <div className="mr-100-0 lg:mr-unset">
       <div>
@@ -52,13 +53,13 @@ const Content = () => {
               <>
                 <div className="root-item flex items-center">
                   <div className="bullet mr-9-0 h-4-0 w-16-0"></div>
-                  <li key={item}>{item.title}</li>
+                  <li key={item.id}>{item.title}</li>
                 </div>
                 {item.content &&
                   item.content.map((item) => (
                     <div className="node-item flex items-center">
                       <div className="bullet mr-13-0 h-4-0 w-12-0"></div>
-                      <li key={item}>{item.title}</li>
+                      <li key={item.id}>{item.title}</li>
                     </div>
                   ))}
               </>

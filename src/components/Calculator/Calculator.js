@@ -4,6 +4,35 @@ import { Checkbox } from "../Checkbox";
 import { Button } from "../Button";
 import { CompensationBox } from "../CompensationBox";
 
+const PERCENTAGE = 0.7;
+const DAYS = getWorkingDaysInMonth();
+
+const showAlert = (inputAverage, inputDays) => {
+  if (!inputAverage && !inputDays) {
+    window.alert("Enter Your Average Income And Days On Sick-Leave!");
+  } else if (!inputAverage) {
+    window.alert("Enter Your Average Income!");
+  } else if (!inputDays) {
+    window.alert("Enter Your Days On Sick-Leave!");
+  } else if (inputDays < 4) {
+    window.alert("Enter more than 3 days!");
+  }
+};
+
+function getWorkingDaysInMonth() {
+  let d = new Date();
+  let year = d.getYear() + 1900;
+  let month = d.getMonth();
+  let total = 0;
+  for (let day = 1; day <= 31; day++) {
+    let t = new Date(year, month, day);
+    if (t.getMonth() > month) break;
+    if (t.getDay() === 0 || t.getDay() === 6) continue;
+    total++;
+  }
+  return total;
+}
+
 const Calculator = () => {
   const [inputDays, setInputDays] = useState(0);
   const [inputAverage, setInputAverage] = useState(0);
@@ -15,26 +44,20 @@ const Calculator = () => {
   const [companyDays, setCompanyDays] = useState(0);
   const [insuranceDays, setInsuranceDays] = useState(0);
 
-  const PERCENTAGE = 0.7;
-  const DAYS = getWorkingDaysInMonth();
-
   const calculate = (inputDays, inputAverage, isTubs) => {
-    if (inputDays < 4) {
-      return;
-    } else {
-      inputDays -= 3;
-    }
+    if (inputDays < 4) return;
+    else inputDays -= 3;
+
     let averageDailyIncome = (inputAverage / DAYS) * PERCENTAGE;
     let companyDays = inputDays > 5 ? 5 : inputDays;
     let insuranceDays = inputDays - companyDays;
 
-    if (isTubs) {
+    if (isTubs)
       insuranceDays =
         insuranceDays >= 240 ? (insuranceDays = 240) : insuranceDays;
-    } else {
+    else
       insuranceDays =
         insuranceDays >= 182 ? (insuranceDays = 182) : insuranceDays;
-    }
 
     setInsuranceDays(insuranceDays);
     setCompanyDays(companyDays);
@@ -44,20 +67,6 @@ const Calculator = () => {
       companyDays * averageDailyIncome + insuranceDays * averageDailyIncome
     );
   };
-
-  function getWorkingDaysInMonth() {
-    let d = new Date();
-    let year = d.getYear() + 1900;
-    let month = d.getMonth();
-    let total = 0;
-    for (let day = 1; day <= 31; day++) {
-      let t = new Date(year, month, day);
-      if (t.getMonth() > month) break;
-      if (t.getDay() === 0 || t.getDay() === 6) continue;
-      total++;
-    }
-    return total;
-  }
 
   return (
     <div className="calculator-wrapper max-h-[800px] max-w-[340px] bg-white pt-40-0 lg:mt-40-0">
@@ -77,17 +86,15 @@ const Calculator = () => {
           label="Days on sick-leave"
           type="days"
         />
-        <Checkbox setValue={(e) => setIsTubs(e)} text="I have tubercolosis" />
+        <Checkbox
+          value={isTubs}
+          setValue={(e) => setIsTubs(e)}
+          text="I have tubercolosis"
+        />
         <div
           onClick={() => {
             calculate(inputDays, inputAverage, isTubs);
-            if (!inputAverage && !inputDays) {
-              window.alert("Enter Your Average Income And Days On Sick-Leave!");
-            } else if (!inputAverage) {
-              window.alert("Enter Your Average Income!");
-            } else if (!inputDays) {
-              window.alert("Enter Your Days On Sick-Leave!");
-            }
+            showAlert(inputAverage, inputDays);
           }}
         >
           <Button text="Calculate" />

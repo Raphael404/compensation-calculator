@@ -2,15 +2,13 @@ import React from "react";
 
 const CompensationBox = ({ isEmployer, days, pays }) => {
   const detectCompensator = () => {
-    if (isEmployer) {
-      return "The employer compensates";
-    } else {
-      return "Health Insurance compensates";
-    }
+    if (isEmployer) return "The employer compensates";
+    else return "Health Insurance compensates";
   };
+
   return (
     <div className="mr-20-0 ml-20-0 flex flex-col">
-      <div className="w-130-0 flex flex-col text-center text-14-0">
+      <div className="flex w-130-0 flex-col text-center text-14-0">
         <span>{detectCompensator()}</span>
         <span className="font-bold">{`${days} days`}</span>
       </div>

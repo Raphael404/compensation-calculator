@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+
+const symbolsArr = ["e", "E", "+", "-", "."];
 
 const Input = ({ type, label, setValue, maxInputLength }) => {
-  const [symbolsArr] = useState(["e", "E", "+", "-", "."]);
   return (
     <div className="mt-20-0">
       <div className="mb-5-0 text-14-0">{label}</div>
